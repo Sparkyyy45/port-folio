@@ -1,4 +1,4 @@
-import { createClient } from "contentful";
+﻿import { createClient } from "contentful";
 
 export type BlogTag = {
   name?: string;
@@ -44,31 +44,32 @@ export async function getBlogsFromContentful(page: number, limit: number): Promi
     environment,
   });
 
-interface ContentfulEntryFields {
-  poster?: {
-    fields?: {
-      file?: {
-        url?: string;
+  interface ContentfulEntryFields {
+    poster?: {
+      fields?: {
+        file?: {
+          url?: string;
+        };
       };
     };
-  };
-  headding?: string;
-  quickLook?: string;
-  description?: string;
-  decription?: string;
-  discription?: string;
-  tags?: string[];
-}
+    headding?: string;
+    quickLook?: string;
+    description?: string;
+    decription?: string;
+    discription?: string;
+    tags?: (string | BlogTag)[];
+    link?: string;
+  }
 
-interface ContentfulRawItem {
-  sys?: {
-    id?: string;
-    createdAt?: string;
-  };
-  fields?: ContentfulEntryFields;
-}
+  interface ContentfulRawItem {
+    sys?: {
+      id?: string;
+      createdAt?: string;
+    };
+    fields?: ContentfulEntryFields;
+  }
 
-  let response: { items?: ContentfulRawItem[] } | undefined;
+  let response: { items?: ContentfulRawItem[]; total?: number } | undefined;
   try {
     response = (await client.getEntries({
       content_type: contentType,
@@ -76,14 +77,25 @@ interface ContentfulRawItem {
       limit,
       skip,
       include: 2,
-    })) as unknown as { items?: ContentfulRawItem[] };
+    })) as unknown as { items?: ContentfulRawItem[]; total?: number };
   } catch {
     return { total: 0, items: [] };
   }
 
-  const items = (response?.items || []).map((item: ContentfulRawItem) => {
+  const items: BlogPost[] = (response?.items || []).map((item: ContentfulRawItem) => {
     const poster = item.fields?.poster;
     const posterUrl = normalizeAssetUrl(poster?.fields?.file?.url);
+
+    const rawTags = item.fields?.tags || [];
+    const normalizedTags: BlogTag[] = rawTags.map((t) => {
+      if (typeof t === "string") {
+        return { name: t, color: "#0A84FF" };
+      }
+      return {
+        name: t?.name || "tag",
+        color: t?.color || "#0A84FF",
+      };
+    });
 
     return {
       id: item.sys?.id || `${item.sys?.createdAt || "entry"}`,
@@ -96,13 +108,13 @@ interface ContentfulRawItem {
         item.fields?.decription ||
         item.fields?.discription ||
         undefined,
-      tags: item.fields?.tags || [],
+      tags: normalizedTags,
       link: typeof item.fields?.link === "string" ? item.fields.link : undefined,
-    } satisfies BlogPost;
+    };
   });
 
   return {
-    total: response.total || 0,
+    total: response?.total || 0,
     items,
   };
 }
