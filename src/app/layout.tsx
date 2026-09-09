@@ -1,14 +1,19 @@
 
 // app/layout.tsx
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import HomeNav from "@/components/HomeNav";
 import ThemeProvider from "./theme-provider";
-import PageTransition from "./page-transition";
-import DelayedFooter from "@/delayed-footer";
 import { Inter, Young_Serif } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
+import PortfolioShell from "@/components/PortfolioShell";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -23,8 +28,8 @@ const youngSerif = Young_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Akshay | Software Developer",
-  description: "Bento-style personal portfolio",
+  title: "Suyash Yadav | Full Stack Developer & Designer",
+  description: "Full Stack Developer & Designer crafting clean web applications, scalable backends, and pixel-perfect digital experiences.",
 };
 
 export default function RootLayout({
@@ -34,11 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className={`${inter.variable} ${youngSerif.variable} antialiased px-6 hide-scrollbar`}>
+      <body suppressHydrationWarning className={`${inter.variable} ${youngSerif.variable} antialiased hide-scrollbar`}>
         <ThemeProvider>
-          <HomeNav />
-          <PageTransition>{children}</PageTransition>
-          <DelayedFooter />
+          <PortfolioShell>{children}</PortfolioShell>
         </ThemeProvider>
         <Analytics/>
       </body>

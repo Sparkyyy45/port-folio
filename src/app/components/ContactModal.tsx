@@ -67,7 +67,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 setSubmitStatus('error');
                 setErrorMessage(data.error || 'Failed to send message');
             }
-        } catch (error) {
+        } catch {
             setSubmitStatus('error');
             setErrorMessage('Network error. Please try again.');
         } finally {
@@ -76,7 +76,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     };
 
     const modalContent = (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 pointer-events-auto h-[100dvh]">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 pointer-events-auto h-[100dvh]">
             {/* Backdrop */}
             <div 
                 className={`absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-md transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
@@ -85,12 +85,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             {/* Modal Dialog */}
             <div 
-                className={`relative w-full max-w-2xl max-h-[95vh] overflow-y-auto rounded-4xl border border-gray-200 bg-[#f8fafc] p-6 sm:p-8 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+                className={`relative w-full max-w-2xl max-h-[90dvh] overflow-y-auto rounded-3xl sm:rounded-4xl border border-gray-200 bg-[#f8fafc] p-5 sm:p-8 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
             >
                 {/* Close Button */}
                 <button 
                     onClick={onClose}
-                    className="absolute top-5 right-5 sm:top-6 sm:right-6 inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b] transition-colors"
+                    className="absolute top-4 right-4 sm:top-6 sm:right-6 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b] transition-colors"
                     aria-label="Close"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -98,12 +98,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </svg>
                 </button>
 
-                <div className="mb-6 mt-1">
-                    <h3 className="text-[26px] font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
+                <div className="mb-5 sm:mb-6 mt-1 pr-8">
+                    <h3 className="text-2xl sm:text-[26px] font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
                         Reach Out
                     </h3>
-                    <p className="mt-1.5 text-sm text-gray-600 dark:text-gray-300">
-                        Drop me a message and I'll get back to you securely to your inbox.
+                    <p className="mt-1.5 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Drop me a message below or email me directly at{" "}
+                        <a 
+                            href="mailto:suyashyadav1709@gmail.com" 
+                            className="text-[#6f5ef5] dark:text-[#a594fd] font-semibold hover:underline break-all sm:break-normal"
+                        >
+                            suyashyadav1709@gmail.com
+                        </a>
                     </p>
                 </div>
 
@@ -115,7 +121,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             </svg>
                         </div>
                         <h4 className="text-xl font-bold text-gray-900 dark:text-white">Message Sent!</h4>
-                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">Thank you for reaching out. I'll respond shortly.</p>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 max-w-md">
+                            Thank you for reaching out! Suyash has been notified and will reply to your email shortly.
+                        </p>
                         <button 
                             onClick={onClose} 
                             className="mt-6 px-6 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition"
@@ -125,7 +133,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                             <div className="space-y-1.5">
                                 <label htmlFor="name" className="text-[13px] font-semibold text-gray-700 dark:text-gray-300 ml-1">Name</label>
                                 <input
@@ -136,7 +144,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder="Your name"
-                                    className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-sm shadow-sm"
+                                    className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-base sm:text-sm shadow-sm"
                                 />
                             </div>
 
@@ -150,7 +158,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="you@example.com"
-                                    className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-sm shadow-sm"
+                                    className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-base sm:text-sm shadow-sm"
                                 />
                             </div>
                         </div>
@@ -161,11 +169,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                 id="message"
                                 name="message"
                                 required
-                                rows={5}
+                                rows={4}
                                 value={formData.message}
                                 onChange={handleChange}
                                 placeholder="How can I help you?"
-                                className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-sm resize-none shadow-sm"
+                                className="w-full px-4 py-3 bg-white dark:bg-[#111821] border border-gray-200 dark:border-gray-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a352d1] transition-all font-medium text-base sm:text-sm resize-none shadow-sm"
                             ></textarea>
                         </div>
 

@@ -87,7 +87,7 @@ export default function TestimonyCard({ name, position, company, review, rating,
         </div>
 
         <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed italic flex-grow">
-          "{review}"
+          &ldquo;{review}&rdquo;
         </p>
       </div>
     </GlowContainer>

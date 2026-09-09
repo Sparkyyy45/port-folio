@@ -2,16 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ICON_CARDS = [
-    { name: "Affine", src: "/tech/affine.svg", card: "w-24 h-24", icon: "w-15 h-15", pos: "top-[-2%] left-[46%]", rot: "-rotate-[13deg]", z: "z-30" },
-    { name: "Splade", src: "/tech/splade.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[6%] right-[-11%]", rot: "rotate-[24deg]", z: "z-20" },
-    { name: "GitHub", src: "/tech/github.svg", card: "w-24 h-24", icon: "w-15 h-15", pos: "top-[20%] left-[24%]", rot: "-rotate-[16deg]", z: "z-30" },
-    { name: "JavaScript", src: "/tech/js.svg", card: "w-24 h-24", icon: "w-15 h-15", pos: "top-[35%] right-[9%]", rot: "rotate-[20deg]", z: "z-20" },
-    { name: "PHP", src: "/tech/php.svg", card: "w-26 h-22", icon: "w-17 h-10", pos: "top-[37%] left-[5%]", rot: "rotate-[10deg]", z: "z-20" },
-    { name: "Tailwind", src: "/tech/tailwindcss.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[52%] left-[39%]", rot: "rotate-[8deg]", z: "z-30" },
+    { name: "TypeScript", src: "/tech/typescript.svg", card: "w-24 h-24", icon: "w-14 h-14", pos: "top-[-2%] left-[46%]", rot: "-rotate-[13deg]", z: "z-30" },
+    { name: "React", src: "/tech/react.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[6%] right-[-11%]", rot: "rotate-[24deg]", z: "z-20" },
+    { name: "Next.js", src: "/tech/nextjs2.svg", card: "w-24 h-24", icon: "w-14 h-14", pos: "top-[20%] left-[24%]", rot: "-rotate-[16deg]", z: "z-30" },
+    { name: "Tailwind", src: "/tech/tailwindcss.svg", card: "w-24 h-24", icon: "w-14 h-14", pos: "top-[35%] right-[9%]", rot: "rotate-[20deg]", z: "z-20" },
+    { name: "Node.js", src: "/tech/nodejs.svg", card: "w-26 h-22", icon: "w-15 h-10", pos: "top-[37%] left-[5%]", rot: "rotate-[10deg]", z: "z-20" },
+    { name: "MongoDB", src: "/tech/mongodb.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[52%] left-[39%]", rot: "rotate-[8deg]", z: "z-30" },
     { name: "Redis", src: "/tech/redis.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[54%] right-[-12%]", rot: "rotate-[18deg]", z: "z-10" },
-    { name: "Laravel", src: "/tech/laravel.svg", card: "w-24 h-24", icon: "w-15 h-15", pos: "top-[68%] left-[12%]", rot: "-rotate-[18deg]", z: "z-30" },
-    { name: "Postman", src: "/tech/postman.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[67%] right-[7%]", rot: "rotate-[10deg]", z: "z-20" },
-    { name: "Ollama", src: "/tech/ollama.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[82%] right-[28%]", rot: "-rotate-[9deg]", z: "z-20" },
+    { name: "PostgreSQL", src: "/tech/postgresql.svg", card: "w-24 h-24", icon: "w-14 h-14", pos: "top-[68%] left-[12%]", rot: "-rotate-[18deg]", z: "z-30" },
+    { name: "Docker", src: "/tech/docker.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[67%] right-[7%]", rot: "rotate-[10deg]", z: "z-20" },
+    { name: "Python", src: "/tech/python.svg", card: "w-22 h-22", icon: "w-13 h-13", pos: "top-[82%] right-[28%]", rot: "-rotate-[9deg]", z: "z-20" },
 ];
 
 export default function TechStackTile() {

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { DndContext, closestCenter, DragOverlay } from "@dnd-kit/core";
 import { arrayMove, SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { useSensor, useSensors, PointerSensor } from "@dnd-kit/core";
@@ -7,9 +7,11 @@ import { restrictToFirstScrollableAncestor } from "@dnd-kit/modifiers";
 import { SortableItem } from "@/components/SortableItem";
 import BentoTile from "@/components/BentoTile";
 import ProjectTile from "@/components/tiles/projects/projectTile";
+import AboutProjectsTile from "@/components/tiles/projects/AboutProjectsTile";
 import { projectsData } from "@/components/tiles/projects/projects";
 
 export default function ProjectPage() {
+    const [selectedFilter, setSelectedFilter] = useState("all");
     const [items, setItems] = useState(projectsData.map(p => p.name));
     const [activeId, setActiveId] = useState<string | null>(null);
     const [isMobile, setIsMobile] = useState(true);
@@ -26,6 +28,26 @@ export default function ProjectPage() {
 
         return () => mediaQuery.removeEventListener("change", updateIsMobile);
     }, []);
+
+    const counts = useMemo(() => {
+        return {
+            all: projectsData.length,
+            deployed: projectsData.filter(p => Boolean(p.view)).length,
+            opensource: projectsData.filter(p => Boolean(p.personal)).length,
+            studio: projectsData.filter(p => !p.personal).length,
+        };
+    }, []);
+
+    const filteredItems = useMemo(() => {
+        return items.filter(name => {
+            const p = projectsData.find(proj => proj.name === name);
+            if (!p) return false;
+            if (selectedFilter === "deployed") return Boolean(p.view);
+            if (selectedFilter === "opensource") return Boolean(p.personal);
+            if (selectedFilter === "studio") return !p.personal;
+            return true;
+        });
+    }, [items, selectedFilter]);
 
     const sensors = useSensors(
         useSensor(PointerSensor, {
@@ -52,6 +74,7 @@ export default function ProjectPage() {
                 setItems((prev) => {
                     const oldIndex = prev.indexOf(activeIdStr);
                     const newIndex = prev.indexOf(overIdStr);
+                    if (oldIndex === -1 || newIndex === -1) return prev;
                     return arrayMove(prev, oldIndex, newIndex);
                 });
                 lastUpdate.current = now;
@@ -59,13 +82,25 @@ export default function ProjectPage() {
         }
     };
 
-    const handleDragEnd = (event: import("@dnd-kit/core").DragEndEvent) => {
+    const handleDragEnd = () => {
         setActiveId(null);
     };
 
     return (
-        <main className="min-h-screen py-5 flex justify-center">
-            <div className="w-full max-w-300 px-4">
+        <main className="min-h-screen py-6 flex justify-center">
+            <div className="w-full max-w-300 px-4 space-y-6">
+                {/* Header Banner Tile */}
+                <div className="grid grid-cols-1">
+                    <BentoTile className="min-h-56">
+                        <AboutProjectsTile
+                            selectedFilter={selectedFilter}
+                            onSelectFilter={setSelectedFilter}
+                            counts={counts}
+                        />
+                    </BentoTile>
+                </div>
+
+                {/* Projects Bento Grid */}
                 <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
@@ -74,18 +109,18 @@ export default function ProjectPage() {
                     onDragEnd={handleDragEnd}
                     modifiers={[restrictToFirstScrollableAncestor]}
                 >
-                    <SortableContext items={items} strategy={rectSortingStrategy}>
+                    <SortableContext items={filteredItems} strategy={rectSortingStrategy}>
                         <div
                             ref={gridRef}
-                            className="grid grid-cols-1 md:grid-cols-2 max-w-300 w-full" // Added gap-4 for safe spacing
+                            className="grid grid-cols-1 md:grid-cols-2 max-w-300 w-full"
                         >
-                            {items.map((name) => {
+                            {filteredItems.map((name) => {
                                 const project = projectsData.find(p => p.name === name);
                                 if (!project) return null;
 
                                 return (
                                     <SortableItem key={name} id={name} disabled={isMobile}>
-                                        <BentoTile className="w-full h-full md:h-75 transition-all duration-200">
+                                        <BentoTile className="w-full h-full min-h-[300px] md:h-75 transition-all duration-200">
                                             <ProjectTile project={project} />
                                         </BentoTile>
                                     </SortableItem>
@@ -102,7 +137,7 @@ export default function ProjectPage() {
                             return (
                                 <BentoTile 
                                     className="w-full h-full md:h-75 pointer-events-none"
-                                    innerClassName="scale-105 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                                    innerClassName="scale-105 shadow-[0_0_30px_rgba(0,0,0,0.15)] dark:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
                                 >
                                     <ProjectTile project={activeProject} />
                                 </BentoTile>

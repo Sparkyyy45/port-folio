@@ -1,149 +1,146 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const BlogTile = () => {
   return (
     <div className="relative w-full h-full rounded-4xl bg-[#f7f7f7] dark:bg-zinc-900 border border-black/5 dark:border-white/5 dark:ring-2 dark:ring-gray-700 shadow-[0_18px_35px_rgba(0,0,0,0.08),0_3px_8px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.85)] dark:shadow-[0_18px_35px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden group">
-      {/* Content */}
-      <div className="relative z-20 px-9 pt-8">
-        <p className="text-[14px] leading-none text-[#3d3d3d] dark:text-zinc-400 font-normal tracking-[-0.01em]">
-          Curated thoughts, experiments & discoveries.
-        </p>
+      {/* Decorative background glow */}
+      <div className="absolute -top-16 -right-16 w-60 h-60 bg-[#0A66C2]/10 dark:bg-[#0A66C2]/15 rounded-full blur-3xl pointer-events-none transition-all duration-700 group-hover:scale-125" />
 
-        <h2 className="mt-5 text-[32px] leading-none font-normal tracking-[-0.04em] text-black dark:text-white font-decorative ">
-          Notes & explorations
-        </h2>
-      </div>
+      {/* Header Content */}
+      <div className="relative z-20 px-5 sm:px-8 pt-5 sm:pt-7 flex items-start justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-xs sm:text-[13px] leading-none text-[#555] dark:text-zinc-400 font-medium tracking-[-0.01em]">
+              Building in Public &amp; Milestones
+            </span>
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0A66C2]/10 text-[#0A66C2] dark:text-[#70B5F9] border border-[#0A66C2]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+              Live Activity
+            </span>
+          </div>
 
-      {/* Decorative bottom arcs */}
-      <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none">
-        <div className="absolute w-[520px] h-[520px] left-[-20px] bottom-[-355px] border-2 border-[#efefef] dark:border-zinc-800 rounded-full"></div>
-        <div className="absolute w-[410px] h-[410px] left-[35px] bottom-[-300px] border-2 border-[#efefef] dark:border-zinc-800 rounded-full"></div>
-        <div className="absolute w-[305px] h-[305px] left-[85px] bottom-[-248px] border-2 border-[#efefef] dark:border-zinc-800 rounded-full"></div>
-      </div>
+          <h2 className="text-xl sm:text-[26px] md:text-[30px] leading-tight font-bold tracking-[-0.03em] text-black dark:text-white font-decorative">
+            Updates &amp; LinkedIn Feed
+          </h2>
+        </div>
 
-      {/* Left mail icon */}
-      <div className="absolute z-30 left-[42px] bottom-[72px] transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1">
-        <div className="w-[52px] h-[52px] rounded-[16px] bg-white dark:bg-zinc-800 shadow-[0_10px_20px_rgba(0,0,0,0.08),0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.95)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3),0_2px_6px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center rotate-[-18deg]">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="rotate-[18deg]">
-            <path
-              d="M4 7.5C4 6.67157 4.67157 6 5.5 6H18.5C19.3284 6 20 6.67157 20 7.5V16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5V7.5Z"
-              stroke="currentColor"
-              className="text-[#555555] dark:text-zinc-400"
-              strokeWidth="1.8"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M5 7L11.136 11.602C11.6692 12.0019 12.4028 12.0019 12.936 11.602L19 7"
-              stroke="currentColor"
-              className="text-[#555555] dark:text-zinc-400"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        {/* Top-Right LinkedIn Logo Badge */}
+        <Link
+          href="https://www.linkedin.com/in/suyash--yadav/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#0A66C2] text-white flex items-center justify-center shadow-md hover:scale-105 transition-transform shrink-0"
+          title="Open Suyash's LinkedIn"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2m1.4 9.74V9.92H5.06v8.58h2.8z" />
           </svg>
+        </Link>
+      </div>
+
+      {/* Mini LinkedIn Activity Preview Card in Center */}
+      <div className="relative z-20 px-4 sm:px-8 pt-3 sm:pt-4 pb-2">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 dark:bg-zinc-800/80 backdrop-blur-xs border border-black/5 dark:border-white/10 shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-transform duration-300 group-hover:-translate-y-0.5">
+          <div className="flex items-center gap-2.5 mb-2">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden ring-1 ring-black/10 dark:ring-white/20 shrink-0">
+              <Image
+                src="/suyash-me.png"
+                alt="Suyash Yadav"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-xs text-gray-900 dark:text-white truncate">
+                  Suyash Yadav
+                </span>
+                <span className="text-[10px] text-[#0A66C2] font-semibold truncate">• GFG Mantri</span>
+              </div>
+              <p className="text-[10px] text-gray-400 dark:text-gray-500">
+                Recent update • 8 real posts
+              </p>
+            </div>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 shrink-0">
+              Studio &amp; Sprint
+            </span>
+          </div>
+
+          <p className="text-xs text-gray-700 dark:text-gray-300 line-clamp-2 leading-relaxed">
+            &ldquo;Launching the Worth IT: Real-World Innovation Challenge by Worthfinding Studio. 2-week build sprint with 9 direct internship opportunities!&rdquo;
+          </p>
+
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 mt-2.5 pt-2 border-t border-gray-100 dark:border-gray-700/60 text-[10px] sm:text-[11px] text-gray-500 dark:text-gray-400 font-medium">
+            <span className="flex items-center gap-1">
+              <span className="text-blue-500">🚀</span> DevPort
+            </span>
+            <span className="flex items-center gap-1">
+              🏆 NPTEL Topper
+            </span>
+            <span className="ml-auto text-[10px] sm:text-[11px] font-bold text-[#0A66C2] dark:text-[#70B5F9] hover:underline whitespace-nowrap">
+              Read 8 updates →
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Center mic icon */}
-      <div className="absolute z-30 left-[45%] bottom-[80px] transition-transform duration-700 group-hover:scale-110 group-hover:-translate-y-2">
-        <div className="w-[58px] h-[58px] rounded-full bg-[#c9f1ef] dark:bg-[#1a3a3a] shadow-[0_12px_24px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.85)] dark:shadow-[0_12px_24px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center">
-          <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 15.5C10.067 15.5 8.5 13.933 8.5 12V7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5V12C15.5 13.933 13.933 15.5 12 15.5Z"
-              stroke="#00a9b4"
-              strokeWidth="1.9"
-            />
-            <path
-              d="M6.5 11.5V12C6.5 15.0376 8.96243 17.5 12 17.5C15.0376 17.5 17.5 15.0376 17.5 12V11.5"
-              stroke="#00a9b4"
-              strokeWidth="1.9"
-              strokeLinecap="round"
-            />
-            <path
-              d="M12 17.5V20"
-              stroke="#00a9b4"
-              strokeWidth="1.9"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
+      {/* Decorative subtle concentric arcs */}
+      <div className="absolute inset-0 z-0 opacity-40 dark:opacity-10 pointer-events-none">
+        <div className="absolute w-[520px] h-[520px] left-[-20px] bottom-[-355px] border border-[#d8d8d8] dark:border-zinc-700 rounded-full"></div>
+        <div className="absolute w-[410px] h-[410px] left-[35px] bottom-[-300px] border border-[#d8d8d8] dark:border-zinc-700 rounded-full"></div>
       </div>
 
-      {/* Top-right globe icon (hidden on mobile) */}
-      <div className="absolute z-30 md:right-[104px] right-[47px] top-[92px] transition-transform duration-500 group-hover:scale-110 group-hover:translate-y-1">
-        <div className="w-[56px] h-[56px] rounded-full bg-white dark:bg-zinc-800 shadow-[0_10px_20px_rgba(0,0,0,0.08),0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.95)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3),0_2px_6px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="8.2" stroke="#f26a21" strokeWidth="1.9" />
-            <path d="M3.8 12H20.2" stroke="#f26a21" strokeWidth="1.9" strokeLinecap="round" />
-            <path d="M12 3.8C14.3 6.1 15.6 9.01 15.6 12C15.6 14.99 14.3 17.9 12 20.2" stroke="#f26a21" strokeWidth="1.9" strokeLinecap="round" />
-            <path d="M12 3.8C9.7 6.1 8.4 9.01 8.4 12C8.4 14.99 9.7 17.9 12 20.2" stroke="#f26a21" strokeWidth="1.9" strokeLinecap="round" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Center-top-right Code Icon */}
-      <div className="absolute z-30 right-[30%] top-[51px] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-12">
-        <div className="w-[48px] h-[48px] rounded-[14px] bg-white dark:bg-zinc-800 shadow-[0_8px_16px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.95)] dark:shadow-[0_8px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center rotate-[12deg]">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M16 18L22 12L16 6" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M8 6L2 12L8 18" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Middle-left Terminal Icon */}
-      <div className="absolute z-30 left-[67%] md:left-[25%] md:top-[120px] top-[187px] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-        <div className="w-[46px] h-[46px] rounded-full bg-[#f0fdf4] dark:bg-[#064e3b] shadow-[0_8px_16px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.85)] dark:shadow-[0_8px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center rotate-[-10deg]">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M4 17L10 11L4 5" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M12 19H20" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Bottom-right calendar icon (hidden on mobile) */}
-      <div className="absolute z-20 right-[110px] bottom-[48px] hidden sm:block transition-transform duration-300 group-hover:scale-110">
-        <div className="w-[34px] h-[34px] rounded-full bg-white dark:bg-zinc-800 shadow-[0_6px_14px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.3)] flex items-center justify-center">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="6" width="16" height="14" rx="2.5" stroke="currentColor" className="text-[#666666] dark:text-zinc-400" strokeWidth="1.6" />
-            <path d="M8 4V8" stroke="currentColor" className="text-[#666666] dark:text-zinc-400" strokeWidth="1.6" strokeLinecap="round" />
-            <path d="M16 4V8" stroke="currentColor" className="text-[#666666] dark:text-zinc-400" strokeWidth="1.6" strokeLinecap="round" />
-            <path d="M4 10H20" stroke="currentColor" className="text-[#666666] dark:text-zinc-400" strokeWidth="1.6" strokeLinecap="round" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Expanding Read Blog Button (Bottom Left) matching Contact tile style */}
-      <button 
+      {/* Expanding 'View Updates' Button (Bottom Left) matching Contact tile style */}
+      <button
         onClick={(e) => {
           e.preventDefault();
-          window.location.href = "/blog";
+          window.location.href = "/updates";
         }}
         onPointerDown={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}
         className="absolute bottom-0 left-0 m-4 z-50 group/btn border-none outline-none bg-transparent p-0 cursor-pointer"
       >
-        <div className="bg-white dark:bg-zinc-800 text-black dark:text-white w-10 h-10 rounded-full flex justify-start items-center ring-2 ring-black/5 dark:ring-white/10 hover:ring-4 hover:ring-black/10 dark:hover:ring-white/20 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden hover:w-[130px] shadow-sm">
+        <div className="bg-white dark:bg-zinc-800 text-black dark:text-white w-10 h-10 rounded-full flex justify-start items-center ring-2 ring-black/5 dark:ring-white/10 hover:ring-4 hover:ring-black/10 dark:hover:ring-white/20 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden hover:w-[150px] shadow-sm">
           {/* Icon part (always w-10 centered) */}
           <div className="min-w-[40px] h-full flex justify-center items-center">
             <svg id="Arrow.7" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18.256 18.256">
               <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
-                <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581"
-                  transform="translate(-7.05 -7.012)" fill="none" stroke="currentColor" strokeLinecap="round"
-                  strokeLinejoin="round" strokeWidth="1.5"></path>
-                <path id="Path_11" data-name="Path 11" d="M10,7l5.287.037.038,5.287"
-                  transform="translate(-7.756 -7)" fill="none" stroke="currentColor" strokeLinecap="round"
-                  strokeLinejoin="round" strokeWidth="1.5"></path>
+                <path
+                  id="Path_10"
+                  data-name="Path 10"
+                  d="M14.581,7.05,7.05,14.581"
+                  transform="translate(-7.05 -7.012)"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                ></path>
+                <path
+                  id="Path_11"
+                  data-name="Path 11"
+                  d="M10,7l5.287.037.038,5.287"
+                  transform="translate(-7.756 -7)"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                ></path>
               </g>
               <path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none"></path>
             </svg>
           </div>
           {/* Text part (appears on hover) */}
           <span className="text-[13px] font-medium whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4 font-decorative">
-            Read Blog
+            View Updates
           </span>
         </div>
       </button>

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <filter id="taskShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background (Light Theme) -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+
+  <!-- Top App Navigation -->
+  <rect x="0" y="0" width="800" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Logo & Title -->
+  <rect x="24" y="16" width="24" height="24" rx="6" fill="#3b82f6"/>
+  <rect x="28" y="20" width="7" height="7" rx="2" fill="#ffffff"/>
+  <rect x="37" y="20" width="7" height="7" rx="2" fill="#93c5fd"/>
+  <rect x="28" y="29" width="7" height="7" rx="2" fill="#93c5fd"/>
+  <rect x="37" y="29" width="7" height="7" rx="2" fill="#ffffff"/>
+  
+  <text x="60" y="32" fill="#0f172a" font-size="15" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Team Productivity Suite</text>
+  <text x="250" y="32" fill="#64748b" font-size="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">MERN Sprint &amp; Operations Workspace</text>
+
+  <!-- Sprint Badge -->
+  <rect x="520" y="16" width="140" height="26" rx="13" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="590" y="33" fill="#1d4ed8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Phoenix Sprint #7</text>
+
+  <!-- User Avatar -->
+  <circle cx="750" cy="28" r="14" fill="#fee2e2"/>
+  <text x="750" y="33" fill="#dc2626" font-size="11" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">SY</text>
+
+  <!-- Left: Kanban Task Board (2 Columns on Left) -->
+  <!-- Column 1: In Progress -->
+  <rect x="24" y="76" width="240" height="500" rx="10" fill="#f1f5f9"/>
+  <text x="38" y="100" fill="#334155" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">IN PROGRESS</text>
+  <rect x="180" y="86" width="22" height="18" rx="9" fill="#e2e8f0"/>
+  <text x="191" y="99" fill="#475569" font-size="10" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">3</text>
+
+  <!-- Task 1 -->
+  <g filter="url(#taskShadow)">
+    <rect x="34" y="115" width="220" height="100" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="46" y="128" width="55" height="18" rx="9" fill="#dbeafe"/>
+    <text x="73" y="140" fill="#1d4ed8" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">React 19</text>
+    <rect x="106" y="128" width="55" height="18" rx="9" fill="#fee2e2"/>
+    <text x="133" y="140" fill="#b91c1c" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">High Pri</text>
+    <text x="46" y="166" fill="#0f172a" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Implement User Auth Flow</text>
+    <text x="46" y="184" fill="#64748b" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">JWT tokens &amp; refresh cookies</text>
+    <circle cx="230" cy="195" r="10" fill="#c7d2fe"/>
+    <text x="230" y="199" fill="#4338ca" font-size="9" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">SY</text>
+  </g>
+
+  <!-- Task 2 -->
+  <g filter="url(#taskShadow)">
+    <rect x="34" y="230" width="220" height="100" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="46" y="243" width="55" height="18" rx="9" fill="#dcfce7"/>
+    <text x="73" y="255" fill="#15803d" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Express</text>
+    <text x="46" y="281" fill="#0f172a" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">REST API Rate Limiting</text>
+    <text x="46" y="299" fill="#64748b" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Redis sliding window algorithm</text>
+    <circle cx="230" cy="310" r="10" fill="#fed7aa"/>
+    <text x="230" y="314" fill="#c2410c" font-size="9" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">AK</text>
+  </g>
+
+  <!-- Task 3 -->
+  <g filter="url(#taskShadow)">
+    <rect x="34" y="345" width="220" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="46" y="358" width="60" height="18" rx="9" fill="#f3e8ff"/>
+    <text x="76" y="370" fill="#7e22ce" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">MongoDB</text>
+    <text x="46" y="396" fill="#0f172a" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Aggregation Pipeline</text>
+    <text x="46" y="414" fill="#64748b" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Daily attendance report queries</text>
+  </g>
+
+  <!-- Column 2: Completed / In Review -->
+  <rect x="280" y="76" width="240" height="500" rx="10" fill="#f1f5f9"/>
+  <text x="294" y="100" fill="#334155" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">COMPLETED IN SPRINT</text>
+  <rect x="480" y="86" width="22" height="18" rx="9" fill="#e2e8f0"/>
+  <text x="491" y="99" fill="#475569" font-size="10" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">4</text>
+
+  <!-- Done Task 1 -->
+  <g filter="url(#taskShadow)">
+    <rect x="290" y="115" width="220" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="302" y="128" width="65" height="18" rx="9" fill="#ecfdf5"/>
+    <text x="334" y="140" fill="#059669" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">&#10003; Deployed</text>
+    <text x="302" y="166" fill="#0f172a" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Kanban Drag-and-Drop</text>
+    <text x="302" y="184" fill="#64748b" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Real-time state sync</text>
+  </g>
+
+  <!-- Done Task 2 -->
+  <g filter="url(#taskShadow)">
+    <rect x="290" y="220" width="220" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="302" y="233" width="65" height="18" rx="9" fill="#ecfdf5"/>
+    <text x="334" y="245" fill="#059669" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">&#10003; Deployed</text>
+    <text x="302" y="271" fill="#0f172a" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Work Hour Logger</text>
+    <text x="302" y="289" fill="#64748b" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Daily timesheet calculation</text>
+  </g>
+
+  <!-- Right: Attendance & Analytics -->
+  <!-- Attendance Card -->
+  <g filter="url(#taskShadow)">
+    <rect x="536" y="76" width="240" height="230" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="552" y="104" fill="#0f172a" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Team Attendance (Today)</text>
+    
+    <!-- Member 1 -->
+    <circle cx="566" cy="135" r="12" fill="#e0e7ff"/>
+    <text x="566" y="139" fill="#4338ca" font-size="9" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">SY</text>
+    <text x="586" y="134" fill="#0f172a" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Suyash Yadav</text>
+    <text x="586" y="147" fill="#64748b" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Lead Developer</text>
+    <rect x="710" y="127" width="50" height="16" rx="8" fill="#dcfce7"/>
+    <text x="735" y="139" fill="#15803d" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Active</text>
+
+    <!-- Member 2 -->
+    <circle cx="566" cy="180" r="12" fill="#fed7aa"/>
+    <text x="566" y="184" fill="#c2410c" font-size="9" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">RN</text>
+    <text x="586" y="179" fill="#0f172a" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Rohan Verma</text>
+    <text x="586" y="192" fill="#64748b" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Backend Dev</text>
+    <rect x="710" y="172" width="50" height="16" rx="8" fill="#dbeafe"/>
+    <text x="735" y="184" fill="#1d4ed8" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Remote</text>
+
+    <!-- Member 3 -->
+    <circle cx="566" cy="225" r="12" fill="#fce7f3"/>
+    <text x="566" y="229" fill="#db2777" font-size="9" font-weight="bold" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">NP</text>
+    <text x="586" y="224" fill="#0f172a" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Neha Patel</text>
+    <text x="586" y="237" fill="#64748b" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">UI Designer</text>
+    <rect x="710" y="217" width="50" height="16" rx="8" fill="#dcfce7"/>
+    <text x="735" y="229" fill="#15803d" font-size="9" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Active</text>
+  </g>
+
+  <!-- Work Hour Analytics Card -->
+  <g filter="url(#taskShadow)">
+    <rect x="536" y="322" width="240" height="254" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="552" y="350" fill="#0f172a" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Weekly Team Hours Logged</text>
+    <text x="552" y="366" fill="#64748b" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Target: 160h • Completed: 148h (92.5%)</text>
+    
+    <!-- Bar Chart -->
+    <!-- Mon -->
+    <rect x="556" y="440" width="22" height="80" rx="4" fill="#3b82f6"/>
+    <text x="567" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Mon</text>
+    <!-- Tue -->
+    <rect x="592" y="420" width="22" height="100" rx="4" fill="#3b82f6"/>
+    <text x="603" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Tue</text>
+    <!-- Wed -->
+    <rect x="628" y="410" width="22" height="110" rx="4" fill="#6366f1"/>
+    <text x="639" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Wed</text>
+    <!-- Thu -->
+    <rect x="664" y="430" width="22" height="90" rx="4" fill="#3b82f6"/>
+    <text x="675" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Thu</text>
+    <!-- Fri -->
+    <rect x="700" y="450" width="22" height="70" rx="4" fill="#3b82f6"/>
+    <text x="711" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Fri</text>
+    <!-- Sat -->
+    <rect x="736" y="480" width="22" height="40" rx="4" fill="#93c5fd"/>
+    <text x="747" y="536" fill="#64748b" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Sat</text>
+  </g>
+</svg>

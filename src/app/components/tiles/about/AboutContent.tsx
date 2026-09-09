@@ -7,13 +7,15 @@ import {
   FiExternalLink,
   FiX,
   FiCode,
+  FiDownload,
 } from "react-icons/fi";
-import { FaQuoteLeft } from "react-icons/fa6";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { careersData, type CareerEntry, type CareerProject } from "@/components/tiles/about/careers";
+import GitHubActivityCard from "./GitHubActivityCard";
 
 const spinGlow = keyframes`
   from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -50,37 +52,34 @@ const GlowBorder = styled.div`
   filter: blur(4px);
 `;
 
-type TestimonialItem = {
-  id: number;
-  quote: string;
-  name: string;
-  position: string;
-  company: string;
-  rating: number;
-};
-
-const skills = ["Software Developer", "Laravel", "PHP", "Tailwind"];
+const skills = [
+  "Full-Stack MERN Developer",
+  "AI & RAG Enthusiast",
+  "GFG Campus Mantri",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "Founder @ Worthfinding",
+];
 
 const education = [
   {
-    degree: "BCA",
-    institute: "Manipal University Jaipur",
-    period: "2024 - Present",
+    degree: "B.Tech in CSE (Full Stack Development)",
+    institute: "Sir Padampat Singhania University (SPSU)",
+    period: "2025 - Present",
+    score: "Specialization in Full Stack Development • SPSU'28",
   },
   {
-    degree: "Computer Engineering & IT Infrastructure",
-    institute: "NTTF Bangalore",
-    period: "2019 - 2022",
+    degree: "Senior Secondary School (12th)",
+    institute: "Suraj School Rewari",
+    period: "2023 - 2025",
+    score: "Grade: 85.6%",
   },
   {
-    degree: "Plus Two Computer Science",
-    institute: "GVHSS Sivapuram",
-    period: "2017 - 2019",
-  },
-  {
-    degree: "SSLC",
-    institute: "GHSS Balussery",
-    period: "2016 - 2017",
+    degree: "Secondary School (10th)",
+    institute: "Sainik School",
+    period: "2021 - 2023",
+    score: "Grade: 90% • House Debate Champion (Best Debater) • North Zone Debate 2nd Place",
   },
 ];
 
@@ -118,38 +117,21 @@ function SectionCard({
     </section>
   );
 }
-function ModalPortal({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+function ModalPortal({ children }: { children: React.ReactNode }) {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   if (!mounted) return null;
 
   return createPortal(children, document.body);
 }
 
-function TestimonialSkeleton() {
-  return (
-    <div className="h-full animate-pulse rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col">
-      <div className="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700" />
-      <div className="mt-4 space-y-2">
-        <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
-        <div className="h-3 w-5/6 rounded bg-gray-200 dark:bg-gray-700" />
-        <div className="h-3 w-4/6 rounded bg-gray-200 dark:bg-gray-700" />
-      </div>
-      <div className="mt-auto pt-6">
-        <div className="h-4 w-24 rounded bg-gray-200 dark:bg-gray-700" />
-        <div className="mt-2 h-3 w-32 rounded bg-gray-200 dark:bg-gray-700" />
-      </div>
-    </div>
-  );
-}
-
-const EMPTY_TESTIMONIALS: TestimonialItem[] = [];
-
-export default function AboutContent({ testimonials: initialTestimonials = EMPTY_TESTIMONIALS }: { testimonials?: TestimonialItem[] }) {
+export default function AboutContent() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerEntry | null>(null);
   const [projectCarousel, setProjectCarousel] = useState<{
@@ -157,39 +139,9 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
     index: number;
   } | null>(null);
   const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
-  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(initialTestimonials);
-  const [loading, setLoading] = useState(initialTestimonials.length === 0);
 
   const previewExperience = useMemo(() => careersData.slice(0, 2), []);
   const previewEducation = useMemo(() => education.slice(0, 2), []);
-
-  useEffect(() => {
-    if (initialTestimonials.length === 0) {
-      const fetchTestimonials = async () => {
-        try {
-          const response = await fetch('/api/reviews');
-          const data = await response.json();
-          const formattedData = data.map((item: any) => ({
-            id: item.id,
-            quote: item.review || item.quote,
-            name: item.name,
-            position: item.position,
-            company: item.company,
-            rating: item.rating
-          }));
-          setTestimonials(formattedData);
-        } catch (error) {
-          console.error("Failed to fetch testimonials:", error);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchTestimonials();
-    } else {
-      setTestimonials(initialTestimonials);
-      setLoading(false);
-    }
-  }, [initialTestimonials]);
   useEffect(() => {
     const isAnyModalOpen = Boolean(selectedCareer || projectCarousel || isTimelineOpen);
     const previousOverflow = document.body.style.overflow;
@@ -205,23 +157,55 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
 
   return (
     <main className="min-h-screen py-5 flex justify-center">
-      <div className="max-w-[1200px] w-full px-4">
+      <div className="max-w-[1200px] w-full px-1 sm:px-4">
         <div className="grid grid-cols-1 gap-5">
           <section className="min-h-75 rounded-4xl bg-white p-4 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 sm:p-5 md:px-10 lg:px-16">
             <div className="h-full flex flex-col justify-center">
-              <div className="flex items-center gap-6 mb-3">
-                <div className="relative w-24 h-24 shrink-0">
-                  <Image
-                    src="/mepopper.png"
-                    alt="Akshay profile"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                  />
+              <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 shrink-0 rounded-full overflow-hidden ring-2 ring-gray-100 dark:ring-gray-700 shadow-md">
+                    <Image
+                      src="/suyash-me.png"
+                      alt="Suyash profile"
+                      width={100}
+                      height={100}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h1 className="text-xl sm:text-2xl font-bold font-decorative tracking-tight text-gray-900 dark:text-white">
+                      Suyash Yadav
+                    </h1>
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                      Full Stack Developer &amp; Designer • SPSU&apos;28
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center w-full sm:w-auto mt-1 sm:mt-0">
+                  <button
+                    onClick={async () => {
+                      const res = await fetch("/resume.pdf");
+                      const blob = await res.blob();
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement("a");
+                      a.href = url;
+                      a.download = "Suyash_Yadav_Resume.pdf";
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0A84FF] px-4 sm:px-5 py-2 text-xs font-bold text-white hover:bg-[#0070e0] transition-all shadow-sm active:scale-95 shadow-blue-500/20 text-center cursor-pointer"
+                    title="Download Suyash Yadav Resume (PDF)"
+                  >
+                    <FiDownload className="h-3.5 w-3.5" />
+                    <span>Download Resume</span>
+                  </button>
                 </div>
               </div>
-              <p className="mt-3 text-gray-500 dark:text-gray-300 text-xs leading-relaxed sm:text-sm md:text-base max-w-[900px]">
-                I am an enthusiastic Laravel developer with experience, keen to leverage my robust knowledge in Laravel and related technologies to significantly contribute to the company success while continuously expanding my expertise. I enjoy creating solutions from scratch, exploring how things work, and I am driven by curiosity to solve complex challenges.
+              <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed max-w-[850px]">
+                I’m a Full Stack Developer &amp; Designer based in Udaipur. I love building clean, modern software from the ground up—blending intuitive design with reliable engineering to turn ideas into fast, scalable products.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-2.5">
@@ -295,7 +279,14 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
                       >
                         <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">{item.degree}</h3>
                         <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 sm:text-sm">{item.institute}</p>
-                        <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">{item.period}</p>
+                        <div className="mt-1.5 flex flex-wrap items-center justify-between gap-1 text-[11px] sm:text-xs">
+                          <span className="text-gray-500 dark:text-gray-400">{item.period}</span>
+                          {item.score && (
+                            <span className="font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-500/20 text-[10px] sm:text-[11px]">
+                              {item.score}
+                            </span>
+                          )}
+                        </div>
                       </article>
                     </GlowContainer>
                   ))}
@@ -315,59 +306,19 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
             </div>
           </div>
 
-          <SectionCard title="Testimonials">
-            <p className="mb-4 text-xs leading-6 text-gray-600 dark:text-gray-300 sm:text-sm sm:leading-7">
-              A few kind words from people I have worked with.
-            </p>
-
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {loading ? (
-                <>
-                  <TestimonialSkeleton />
-                  <TestimonialSkeleton />
-                  <TestimonialSkeleton />
-                </>
-              ) : testimonials.length > 0 ? (
-                testimonials.map((item) => (
-                  <GlowContainer key={item.id}>
-                    <GlowBorder />
-                    <article
-                      className="group relative z-10 h-full rounded-[calc(1.5rem-1.5px)] border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col overflow-hidden"
-                    >
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
-                        <FaQuoteLeft className="h-4 w-4" />
-                      </div>
-                      <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
-                        {item.quote}
-                      </p>
-                      <div className="mt-auto pt-1">
-                        <h3 className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white sm:text-base">
-                          - {item.name}
-                        </h3>
-                        <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
-                          {item.position} {item.company ? `• ${item.company}` : ""}
-                        </p>
-                      </div>
-                    </article>
-                  </GlowContainer>
-                ))
-              ) : (
-                <div className="col-span-1 md:col-span-2 xl:col-span-3 text-center py-10 text-gray-500">
-                  No testimonials yet.
-                </div>
-              )}
-            </div>
+          <SectionCard title="GitHub Contributions & Activity" badge="@Sparkyyy45">
+            <GitHubActivityCard />
           </SectionCard>
         </div>
       </div>
 
       {selectedCareer && (
         <ModalPortal>
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm modal-backdrop-enter">
-          <div className="w-full max-w-4xl rounded-4xl border border-gray-200 bg-[#f8fafc] shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter">
-            <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 dark:border-gray-700 sm:px-5 md:px-6">
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 p-2.5 sm:p-4 backdrop-blur-sm modal-backdrop-enter">
+          <div className="w-full max-w-4xl max-h-[90dvh] flex flex-col rounded-3xl sm:rounded-4xl border border-gray-200 bg-[#f8fafc] shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter overflow-hidden">
+            <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3.5 dark:border-gray-700 sm:px-5 md:px-6 shrink-0">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-gray-300 bg-white dark:border-gray-600 dark:bg-[#111821]">
+                <div className="relative h-10 w-10 sm:h-11 sm:w-11 shrink-0 overflow-hidden rounded-2xl border border-gray-300 bg-white dark:border-gray-600 dark:bg-[#111821]">
                   <Image
                     src={selectedCareer.logo}
                     alt={`${selectedCareer.company} logo`}
@@ -376,21 +327,21 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
                   />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="truncate text-lg font-bold text-gray-900 dark:text-white sm:text-xl">{selectedCareer.company}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">{selectedCareer.role} • {selectedCareer.period}</p>
+                  <h3 className="truncate text-base font-bold text-gray-900 dark:text-white sm:text-xl">{selectedCareer.company}</h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-300 truncate sm:text-sm">{selectedCareer.role} • {selectedCareer.period}</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedCareer(null)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b]"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b]"
                 aria-label="Close career details"
               >
                 <FiX className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="max-h-[78vh] space-y-4 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 md:px-6">
+            <div className="space-y-4 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 md:px-6">
               <section className="rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
                 <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">Overview</h4>
                 <p className="mt-2 text-xs leading-6 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-7">{selectedCareer.overview}</p>
@@ -442,7 +393,7 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
                 </div>
               </section>
 
-              <section className="h-[220px] rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
+              <section className="min-h-[160px] rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
                 <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">Skills Acquired</h4>
                 <div className="mt-3 grid max-h-[155px] grid-cols-2 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-3 md:grid-cols-4">
                   {selectedCareer.skills.map((skill) => (
@@ -545,14 +496,14 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
 
       {isTimelineOpen && (
         <ModalPortal>
-          <div className="fixed inset-0 z-[1010] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm modal-backdrop-enter">
-          <div className="w-full max-w-3xl rounded-4xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter sm:p-5 md:p-6">
-            <div className="flex items-center justify-between gap-3">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">Career & Studies Timeline</h3>
+          <div className="fixed inset-0 z-[1010] flex items-center justify-center bg-black/50 p-2.5 sm:p-4 backdrop-blur-sm modal-backdrop-enter">
+          <div className="w-full max-w-3xl max-h-[90dvh] flex flex-col rounded-3xl sm:rounded-4xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter sm:p-5 md:p-6 overflow-hidden">
+            <div className="flex items-center justify-between gap-3 shrink-0">
+              <h3 className="text-base font-bold text-gray-900 dark:text-white sm:text-xl">Career & Studies Timeline</h3>
               <button
                 type="button"
                 onClick={() => setIsTimelineOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b]"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-[#151f2b]"
                 aria-label="Close timeline"
               >
                 <FiX className="h-4 w-4" />
@@ -630,7 +581,14 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
                       >
                         <h4 className="text-base font-semibold text-gray-900 dark:text-white">{item.degree}</h4>
                         <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300">{item.institute}</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.period}</p>
+                        <div className="mt-2 flex flex-wrap items-center justify-between gap-1.5 text-xs">
+                          <span className="text-gray-500 dark:text-gray-400">{item.period}</span>
+                          {item.score && (
+                            <span className="font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-500/20 text-xs">
+                              {item.score}
+                            </span>
+                          )}
+                        </div>
                       </article>
                     </GlowContainer>
                   ))}

@@ -1,462 +1,361 @@
 export const projectsData = [
   {
-    name: "Scheduler List",
+    name: "Worthfinding Studio",
     description:
-      "A real-time dashboard package for  Laravel's task scheduler. Track every Artisan command running, what's next, and trigger tasks on demand. Echo output streams live.",
-    image: "/projects/scheduler.png",
-    github: "https://github.com/Akshayp2002/scheduler-list-laravel",
-    view: "https://scheduler.devakshay.app/",
+      "Digital experience and growth studio engineering bespoke digital flagships, Google Maps Top-3 local dominance, and high-conversion acquisition funnels.",
+    image: "/projects/worthfinding-real.png",
+    github: "https://github.com/Sparkyyy45",
+    view: "https://worthfinding.tech",
     workStatus: true,
-    date: "May - 2026",
+    date: "2025 - Present",
     demo: false,
     personal: false,
     tech: [
       {
-        name: "PHP",
-        image: "/tech/php.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
-      },
-      {
-        name: "Spatie",
-        image: "/tech/spatie.svg",
-      },
-    ],
-  },
-  {
-    name: "Portfolio",
-    description:
-      "A personal portfolio website designed to display my development skills and projects. This highlights my proficiency in Angular, and more.",
-    image: "/projects/portfolio.webp",
-    github: "https://github.com/Akshayp2002/personal-portfolio-angular",
-    view: "https://devakshay.app",
-    workStatus: true,
-    date: "Augest - 2024",
-    demo: false,
-    personal: true,
-    tech: [
-      {
-        name: "Angular",
-        image: "/tech/angular17.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Typescript",
-        image: "/tech/typescript.svg",
-      },
-      {
-        name: "Figma",
-        image: "/tech/figma.svg",
-      },
-    ],
-  },
-  {
-    name: "Retro Radio",
-    description:
-      "Retro Radio is a music streaming platform that offers a nostalgic experience with a curated selection of classic and vintage music.",
-    image: "/projects/retro-radio.png",
-    github: "https://github.com/Akshayp2002/radio",
-    view: "https://radio-devakshay.vercel.app",
-    workStatus: true,
-    date: "Feb - 2026",
-    demo: false,
-    personal: true,
-    tech: [
-      {
-        name: "Nextjs",
+        name: "Next.js",
         image: "/tech/nextjs2.svg",
       },
       {
-        name: "Tailwind",
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Tailwind CSS",
         image: "/tech/tailwindcss.svg",
       },
       {
-        name: "vercel",
+        name: "Vercel",
         image: "/tech/vercel-icon-dark.svg",
       },
-      {
-        name: "Supabase",
-        image: "/tech/supabase.svg",
-      },
     ],
   },
   {
-    name: "Minimal Portfolio",
+    name: "RepoSage",
     description:
-      "A new and minimal personal portfolio website designed to display my development skills and projects.",
-    image: "/projects/minimal-portfolio.png",
-    github: "https://github.com/Akshayp2002/nextjs-portfolio",
-    view: "https://devakshaynew.vercel.app",
-    workStatus: false,
-    date: "December - 2025",
+      "AI-guided developer platform that matches engineers with good-first-issues in open source repositories and walks through codebases before shipping a PR.",
+    image: "/projects/repo-sage-user.png",
+    github: "https://github.com/Sparkyyy45/Repo-Sage",
+    view: "https://the-repo-sage.vercel.app/",
+    workStatus: true,
+    date: "July - 2026",
     demo: false,
     personal: true,
     tech: [
       {
-        name: "Nextjs",
+        name: "Next.js",
         image: "/tech/nextjs2.svg",
       },
       {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Typescript",
+        name: "TypeScript",
         image: "/tech/typescript.svg",
       },
-    ],
-  },
-  {
-    name: "Hinez",
-    description:
-      "Unlock comprehensive efficiency and growth potential. Transform your operations today to boost workforce engagement and productivity",
-    image: "/projects/hinez.webp",
-    github: false,
-    view: "https://myhinez.com/",
-    workStatus: false,
-    date: "May - 2024",
-    demo: false,
-    tech: [
       {
-        name: "PHP",
-        image: "/tech/php.svg",
+        name: "OpenAI",
+        image: "/tech/openai.svg",
       },
       {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
-      },
-      {
-        name: "Splade",
-        image: "/tech/splade.svg",
-      },
-      {
-        name: "Mysql",
-        image: "/tech/mysql.svg",
-      },
-      {
-        name: "Bootstrap",
-        image: "/tech/bootstrap.svg",
-      },
-    ],
-  },
-  {
-    name: "Rugr",
-    description:
-      "Rugr play acrucial role in the modem financial ecosystem by facilitating between merchants and related stakeholders.",
-    image: "/projects/rugr.webp",
-    github: false,
-    view: "https://rugr.com",
-    workStatus: false,
-    date: "February - 2025",
-    demo: false,
-    tech: [
-      {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
-      },
-      {
-        name: "Mysql",
-        image: "/tech/mysql.svg",
-      },
-      {
-        name: "Tailwind",
+        name: "Tailwind CSS",
         image: "/tech/tailwindcss.svg",
       },
-      {
-        name: "Nextjs",
-        image: "/tech/nextjs2.svg",
-      },
-      {
-        name: "Typescript",
-        image: "/tech/typescript.svg",
-      },
     ],
   },
   {
-    name: "Itrend Commerce",
+    name: "CivicFix AI",
     description:
-      "An API-driven platform integrating Amazon Ads, and real-time inventory synchronization, and efficient large-scale data processing.",
-    image: "/projects/itrend-sp.webp",
-    github: false,
-    view: false,
+      "Civic issue resolution platform with computer vision analysis that detects urban defects, estimates severity, and routes reports to municipal departments.",
+    image: "/projects/civicfix-user.png",
+    github: "https://github.com/Sparkyyy45/CivicFix-AI",
+    view: "https://civicfixaiforus.vercel.app/",
     workStatus: true,
-    date: "May - 2025",
-    demo: false,
-    personal: false,
-    tech: [
-      {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
-      },
-      {
-        name: "Mysql",
-        image: "/tech/mysql.svg",
-      },
-      {
-        name: "Bootstrap",
-        image: "/tech/bootstrap.svg",
-      },
-      {
-        name: "Amazon SP",
-        image: "/tech/aws.svg",
-      },
-      {
-        name: "Ollama",
-        image: "/tech/ollama.svg",
-      },
-    ],
-  },
-  {
-    name: "Home Lab System",
-    description:
-      "The Home Lab System is a self-hosted setup in my house, using an old computer to run private services with Docker and other software solutions.",
-    image: "/projects/homelabs.webp",
-    github: "https://github.com/Akshayp2002/homelab/tree/main",
-    view: false,
-    workStatus: true,
-    date: "January - 2025",
+    date: "August - 2026",
     demo: false,
     personal: true,
     tech: [
+      {
+        name: "Next.js",
+        image: "/tech/nextjs2.svg",
+      },
+      {
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Python",
+        image: "/tech/python.svg",
+      },
+      {
+        name: "PostgreSQL",
+        image: "/tech/postgresql.svg",
+      },
+    ],
+  },
+  {
+    name: "CampusCore",
+    description:
+      "Academic hub for Sir Padampat Singhania University where students access faculty-verified notes, curriculum roadmaps, and campus announcements.",
+    image: "/projects/campus-core-user.png",
+    github: "https://github.com/Sparkyyy45/campus-core",
+    view: "https://campus-core-rho.vercel.app",
+    workStatus: true,
+    date: "August - 2026",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "Next.js",
+        image: "/tech/nextjs2.svg",
+      },
+      {
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+      {
+        name: "Vercel",
+        image: "/tech/vercel-icon-dark.svg",
+      },
+    ],
+  },
+  {
+    name: "openenv",
+    description:
+      "Open registry of full-stack production starter kits pre-configured with authentication, databases, Docker containers, and CI-verified deployment.",
+    image: "/projects/openenv-user.png",
+    github: "https://github.com/Sparkyyy45/openenv",
+    view: "https://the-openenv.vercel.app/",
+    workStatus: true,
+    date: "June - 2026",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "Node.js",
+        image: "/tech/nodejs.svg",
+      },
+      {
+        name: "JavaScript",
+        image: "/tech/js.svg",
+      },
       {
         name: "Docker",
         image: "/tech/docker.svg",
       },
       {
-        name: "Jellyfin",
-        image: "/tech/jellyfin.svg",
-      },
-      {
-        name: "Tailscale",
-        image: "/tech/tailscale.svg",
-      },
-      {
-        name: "Immich",
-        image: "/tech/immich.svg",
-      },
-      {
-        name: "Linux",
-        image: "/tech/linux.svg",
+        name: "GitHub Actions",
+        image: "/tech/githubactions.svg",
       },
     ],
   },
   {
-    name: "Quotes Generator",
+    name: "DevPort",
     description:
-      "Click to receive a new, uplifting quote from a wide range of categories and let each day be filled with wisdom and motivation.",
-    image: "/projects/quotes.webp",
-    github: "https://github.com/Akshayp2002/quote-generator",
-    view: "https://timspass.vercel.app/quotes",
-    workStatus: false,
-    date: "Augest - 2024",
-    demo: true,
-    tech: [
-      {
-        name: "Angular",
-        image: "/tech/angular17.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Typescript",
-        image: "/tech/typescript.svg",
-      },
-      {
-        name: "Apininja",
-        image: "/tech/ninja.png",
-      },
-    ],
-  },
-  {
-    name: "QRCode Generate",
-    description:
-      "This tool is perfect for anyone needing a quick and reliable way to create QR codes for personal or professional use.",
-    image: "/projects/qrcode-page.webp",
-    github: "https://github.com/Akshayp2002/quote-generator",
-    view: "https://timspass.vercel.app/qrcode",
-    workStatus: false,
-    date: "Augest - 2024",
-    demo: true,
-    tech: [
-      {
-        name: "Angular",
-        image: "/tech/angular17.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Typescript",
-        image: "/tech/typescript.svg",
-      },
-      {
-        name: "Apininja",
-        image: "/tech/ninja.png",
-      },
-    ],
-  },
-  {
-    name: "Instagram",
-    description:
-      "A clone of Instagram, the popular social media platform, allowing users to interact with content in a visually appealing and user-friendly environment.",
-    image: "/projects/instagram.webp",
-    github: "https://github.com/Akshayp2002/instagram-angular",
-    view: "https://devinstagram.vercel.app",
+      "Developer portfolio builder that imports GitHub data or resumes to generate and deploy recruiter-magnet personal websites in 60 seconds.",
+    image: "/projects/devport-user.png",
+    github: "https://github.com/Sparkyyy45/portfolio-maker",
+    view: "https://portfolio-maker-alpha-wheat.vercel.app",
     workStatus: true,
-    date: "July - 2024",
-    demo: true,
-    tech: [
-      {
-        name: "Angular",
-        image: "/tech/angular17.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Flowbite",
-        image: "/tech/flowbite.svg",
-      },
-      {
-        name: "Typescript",
-        image: "/tech/typescript.svg",
-      },
-    ],
-  },
-  {
-    name: "Netflix",
-    description:
-      "A Netflix clone that allows browsing and viewing TV shows using data from an open API, featuring a responsive and user-friendly interface.",
-    image: "/projects/netflix-cole.webp",
-    github: "https://github.com/Akshayp2002/netflix-clone-angular",
-    view: "https://netflix-clone-angular2.vercel.app",
-    workStatus: false,
-    date: "June - 2024",
-    demo: true,
-    tech: [
-      {
-        name: "Angular",
-        image: "/tech/angular17.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Flowbite",
-        image: "/tech/flowbite.svg",
-      },
-      {
-        name: "Swipper",
-        image: "/tech/swipper.svg",
-      },
-      {
-        name: "Tmdb",
-        image: "/tech/tmdb.svg",
-      },
-    ],
-  },
-  {
-    name: "Swiftrevel",
-    description:
-      "Swiftrevel fintech, integrating flawlessly with your existing tools and software to and streamline your workflow.",
-    image: "/projects/swiftrevel.webp",
-    github: false,
-    view: "https://swiftrevel.com",
-    workStatus: false,
-    date: "May - 2024",
+    date: "July - 2026",
     demo: false,
+    personal: true,
     tech: [
       {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
-      },
-      {
-        name: "Tailwind",
-        image: "/tech/tailwindcss.svg",
-      },
-      {
-        name: "Nextjs",
+        name: "Next.js",
         image: "/tech/nextjs2.svg",
       },
       {
-        name: "Mysql",
-        image: "/tech/mysql.svg",
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+      {
+        name: "Git",
+        image: "/tech/git.svg",
       },
     ],
   },
   {
-    name: "Farmers Copper",
+    name: "PlacementOS",
     description:
-      "Farmer’s Copper Ltd. extends its services throughout many industries. Provide the raw copper alloy materials.",
-    image: "/projects/farmers-copper.webp",
-    github: false,
+      "Comprehensive career acceleration platform featuring real-time ATS resume scoring, personalized engineering skill roadmaps, and AI mock interview simulations.",
+    image: "/projects/placement-os-light.png",
+    github: "https://github.com/Sparkyyy45/Placement-OS",
     view: false,
-    workStatus: false,
-    date: "November - 2023",
+    workStatus: true,
+    date: "May - 2026",
     demo: false,
+    personal: true,
     tech: [
       {
-        name: "Laravel",
-        image: "/tech/laravel.svg",
+        name: "Next.js",
+        image: "/tech/nextjs2.svg",
       },
       {
-        name: "HTML",
-        image: "/tech/html5.svg",
+        name: "React",
+        image: "/tech/react.svg",
       },
       {
-        name: "CSS",
-        image: "/tech/css3.svg",
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
       },
       {
-        name: "Mysql",
-        image: "/tech/mysql.svg",
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
       },
     ],
   },
   {
-    name: "Student 360",
+    name: "InfluencerIQ",
     description:
-      "A final year project: A student management portal designed to manage attendance, grades, student details, and other academic details.",
-    image: "/projects/student360.webp",
-    github: "https://github.com/Akshayp2002/Student-360",
+      "Creator intelligence and campaign matching engine analyzing engagement metrics, audience credibility, and brand affinity to forecast campaign ROI.",
+    image: "/projects/influencer-iq-light.svg",
+    github: "https://github.com/Sparkyyy45/Influencer-IQ",
     view: false,
-    workStatus: false,
-    date: "April - 2022",
+    workStatus: true,
+    date: "June - 2026",
     demo: false,
+    personal: true,
     tech: [
       {
-        name: "Nodejs",
+        name: "Next.js",
+        image: "/tech/nextjs2.svg",
+      },
+      {
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Node.js",
         image: "/tech/nodejs.svg",
       },
       {
-        name: "Bootstrap",
-        image: "/tech/bootstrap.svg",
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    name: "Team Productivity Suite",
+    description:
+      "Full-stack team operations dashboard with real-time sprint kanbans, team attendance logging, working-hour tracking, and workload distribution metrics.",
+    image: "/projects/team-productivity-light.svg",
+    github: "https://github.com/Sparkyyy45/Team_Productivity_Suite",
+    view: false,
+    workStatus: true,
+    date: "July - 2026",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "React",
+        image: "/tech/react.svg",
+      },
+      {
+        name: "Node.js",
+        image: "/tech/nodejs.svg",
+      },
+      {
+        name: "Express",
+        image: "/tech/express.svg",
       },
       {
         name: "MongoDB",
         image: "/tech/mongodb.svg",
       },
+    ],
+  },
+  {
+    name: "Sangam Alumni Network",
+    description:
+      "Unified alumni engagement portal connecting university graduates with students for 1-on-1 career mentorship, vetted referrals, and networking events.",
+    image: "/projects/sangam.png",
+    github: "https://github.com/Sparkyyy45/Sangam",
+    view: "https://sangam.vly.site",
+    workStatus: true,
+    date: "August - 2026",
+    demo: false,
+    personal: true,
+    tech: [
       {
-        name: "HTML",
-        image: "/tech/html5.svg",
+        name: "React",
+        image: "/tech/react.svg",
       },
       {
-        name: "Javascript",
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Node.js",
+        image: "/tech/nodejs.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    name: "Connectibles",
+    description:
+      "Social discovery platform for university builders to connect, form hackathon teams, share side-projects, and build meaningful technical connections.",
+    image: "/projects/connectibles.png",
+    github: "https://github.com/Sparkyyy45/connectibles",
+    view: "https://Connectibles.vly.site",
+    workStatus: true,
+    date: "August - 2026",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "React",
+        image: "/tech/react.svg",
+      },
+      {
+        name: "TypeScript",
+        image: "/tech/typescript.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+      {
+        name: "Express",
+        image: "/tech/express.svg",
+      },
+    ],
+  },
+  {
+    name: "Yapper",
+    description:
+      "Interactive document reading tool that transforms dense academic PDFs, research papers, and lecture slides into conversational iMessage-style dialogues.",
+    image: "/projects/yapper.png",
+    github: "https://github.com/Sparkyyy45/Yapper",
+    view: "https://yapper-roan.vercel.app",
+    workStatus: true,
+    date: "July - 2026",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "Next.js",
+        image: "/tech/nextjs2.svg",
+      },
+      {
+        name: "JavaScript",
         image: "/tech/js.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        image: "/tech/tailwindcss.svg",
+      },
+      {
+        name: "OpenAI",
+        image: "/tech/openai.svg",
       },
     ],
   },

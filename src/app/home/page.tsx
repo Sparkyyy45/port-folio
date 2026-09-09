@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import {
     DndContext,
     closestCenter,
@@ -8,13 +8,9 @@ import {
     useSensor,
     useSensors,
     DragStartEvent,
-    DragEndEvent,
     DragOverEvent,
     MeasuringStrategy,
 } from "@dnd-kit/core";
-import {
-    restrictToParentElement,
-} from "@dnd-kit/modifiers";
 import {
     arrayMove,
     SortableContext,
@@ -36,25 +32,25 @@ import ContactTile from "@/components/tiles/home/ContactTile";
 import BlogTile from "@/components/tiles/home/BlogTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
-    intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
+    intro: { className: "md:col-span-2 lg:col-span-2 min-h-[300px] h-auto md:h-75", content: <IntroTile /> },
     mapView: {
         className: "col-span-1 h-75",
         content: (
             <MapTile/>
         ),
     },
-    techStack: { className: "col-span-1 lg:row-span-2 h-155", content: <TechStackTile /> },
+    techStack: { className: "col-span-1 lg:row-span-2 h-[420px] lg:h-155", content: <TechStackTile /> },
     themeToggle: { className: "col-span-1 h-75", content: <ThemeToggleTile /> },
     instagram: {
         className: "col-span-1 h-75",
         content: <SocialTile />,
     },
     portrait: {
-        className: "col-span-1 lg:row-span-2 h-155",
+        className: "col-span-1 lg:row-span-2 h-[420px] lg:h-155",
         content: <ProjectDetailsTile />,
     },
     blog: {
-        className: "md:col-span-2 h-75",
+        className: "md:col-span-2 min-h-[330px] h-auto md:h-75",
         content: <BlogTile />,
     },
     github: { className: "col-span-1 h-75", content: <GitHubTile /> },
@@ -63,22 +59,25 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
         content: <BusinessPreviewTile />,
     },
     contact: {
-        className: "md:col-span-2 h-75",
+        className: "md:col-span-2 min-h-[300px] h-auto md:h-75",
         content: <ContactTile />,
     },
 };
 
 
+const emptySubscribe = () => () => {};
+
 export default function HomeInner() {
     const [items, setItems] = useState(() => Object.keys(TILE_CONFIG));
     const [activeId, setActiveId] = useState<string | null>(null);
-    const [isMounted, setIsMounted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const lastUpdate = useRef<number>(0);
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    const isMounted = useSyncExternalStore(
+        emptySubscribe,
+        () => true,
+        () => false
+    );
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -120,7 +119,7 @@ export default function HomeInner() {
         }
     };
 
-    const handleDragEnd = (event: DragEndEvent) => {
+    const handleDragEnd = () => {
         setActiveId(null);
     };
 
@@ -128,7 +127,7 @@ export default function HomeInner() {
 
     return (
         <main className="min-h-screen py-5 flex justify-center w-full">
-            <div className="max-w-[1200px] w-full px-4 relative">
+            <div className="max-w-[1200px] w-full px-1 sm:px-4 relative">
                 <DndContext
                     id="final-stable-bento"
                     sensors={sensors}

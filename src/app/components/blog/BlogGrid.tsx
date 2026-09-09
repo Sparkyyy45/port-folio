@@ -2,8 +2,10 @@
 
 import BlogCard from "@/components/blog/BlogCard";
 import { BlogPost } from "@/lib/contentful/blogs";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+
+const emptySubscribe = () => () => {};
 
 function formatDate(value?: string) {
   if (!value) return "";
@@ -19,11 +21,11 @@ function formatDate(value?: string) {
 
 export default function BlogGrid({ items }: { items: BlogPost[] }) {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;

@@ -34,11 +34,11 @@ export async function POST(req: Request) {
         is_approved: false
       });
       return NextResponse.json({ success: true, data });
-    } catch (supabaseError: any) {
+    } catch (supabaseError: unknown) {
       console.error('Supabase Save Failed:', supabaseError);
       return NextResponse.json({ 
         error: 'Failed to save review to database.',
-        details: supabaseError.message || JSON.stringify(supabaseError)
+        details: supabaseError instanceof Error ? supabaseError.message : String(supabaseError)
       }, { status: 500 });
     }
   } catch (error: unknown) {

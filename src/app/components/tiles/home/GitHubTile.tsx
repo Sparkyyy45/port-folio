@@ -1,11 +1,10 @@
 // components/tiles/home/GitHubTile.tsx
-import Image from 'next/image';
 
 export default function GitHubTile() {
     return (
         <div className="w-full h-full bg-[#0d1117] p-8 relative flex items-center justify-center dark:ring-2 dark:ring-gray-700 rounded-4xl">
             {/* Arrow in bottom-left corner of card */}
-            <a href="https://github.com/Akshayp2002" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Sparkyyy45/" target="_blank" rel="noopener noreferrer">
                 <div
                     className="bg-white dark:bg-[#0d1117] text-[#0d1117] dark:text-white w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center ring-2 ring-gray-200 dark:ring-gray-700 hover:ring-4 hover:ring-gray-300 dark:hover:ring-gray-500 transition duration-300 ease-in-out"
                 >

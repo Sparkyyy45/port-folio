@@ -3,21 +3,33 @@ import Link from "next/link";
 
 export default function ProjectDetailsTile() {
 	return (
-		<div className="w-full h-full relative overflow-hidden rounded-4xl bg-[#69ccb8] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
-			<div className="absolute -top-14 right-[-24%] w-[86%] h-[40%] bg-[#9adacc] rounded-[48%] dark:bg-[#0d1117]" />
-			<div className="absolute -bottom-16 -left-14 w-[75%] h-[42%] bg-[#efbdd1] rounded-[55%] dark:bg-[#0d1117]" />
+		<div className="w-full h-full relative overflow-hidden rounded-4xl bg-gradient-to-b from-[#1e293b] via-[#0f172a] to-[#020617] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 border border-cyan-500/20 group">
+			<div className="absolute -top-14 right-[-24%] w-[86%] h-[40%] bg-cyan-500/10 rounded-[48%] blur-3xl dark:bg-[#0d1117]" />
+			<div className="absolute -bottom-16 -left-14 w-[75%] h-[42%] bg-indigo-500/15 rounded-[55%] blur-3xl dark:bg-[#0d1117]" />
 
-			<div className="absolute top-[-4%] left-[112%] w-[76%] aspect-[257/567] -rotate-[30deg] rounded-[2.2rem] bg-white/95 shadow-[0_16px_28px_rgba(15,23,42,0.12)] ring-1 ring-black/5 z-10" />
+			{/* Floating Flagship Badge */}
+			<div className="absolute top-6 left-6 z-30 flex flex-col gap-1.5">
+				<span className="px-3 py-1 text-xs font-bold rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md inline-flex items-center gap-1.5 w-fit">
+					<span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+					Featured Project
+				</span>
+				<h3 className="text-white text-lg font-black tracking-tight font-decorative">
+					RepoSage AI
+				</h3>
+				<p className="text-gray-400 text-xs max-w-[200px]">
+					Codebase architecture explorer & repository intelligence engine.
+				</p>
+			</div>
 
-			<div className="absolute top-[18%] left-[36%] w-[76%] aspect-[257/567] -rotate-[30deg] rounded-[2.2rem] shadow-[0_20px_40px_rgba(15,23,42,0.20)] overflow-hidden ring-1 ring-black/5 z-20 bg-white">
+			<div className="absolute top-[28%] left-[10%] w-[85%] aspect-[4/3] rounded-[1.6rem] shadow-[0_24px_50px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-cyan-500/30 z-20 bg-black/80 transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1">
 				<div className="w-full h-full relative">
 					<Image
-						src="/projects/audis-radio-p.png"
-						alt="Audis Radio mobile project preview"
+						src="/projects/repo-sage-user.png"
+						alt="RepoSage preview"
 						fill
 						quality={100}
 						unoptimized
-						className="object-contain"
+						className="object-cover"
 					/>
 				</div>
 			</div>

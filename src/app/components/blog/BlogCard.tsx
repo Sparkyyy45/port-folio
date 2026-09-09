@@ -68,7 +68,7 @@ export default function BlogCard({ blog, onOpenDetails }: BlogCardProps) {
           <span className="text-[11px] text-gray-500 dark:text-gray-400">{date}</span>
           {blog.link ? (
             <Link
-              href={`${blog.link}?ref=devakshay.vercel.app`}
+              href={blog.link}
               target="_blank"
               onClick={(event) => event.stopPropagation()}
               className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-[#0D1117] dark:bg-gray-700 dark:text-white hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors duration-300 ease-in-out flex-shrink-0"

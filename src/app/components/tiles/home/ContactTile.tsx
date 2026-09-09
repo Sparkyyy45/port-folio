@@ -11,10 +11,10 @@ export default function ContactTile() {
             {/* Header */}
             <div className="relative z-50">
                 <h2 className="text-[25px] font-semibold font-decorative tracking-[-0.02em] text-[#1e1e1e] dark:text-white leading-tight">
-                    Let's Connect
+                    Let&apos;s Connect
                 </h2>
-                <p className="mt-1.5 max-w-[280px] text-[15px] leading-relaxed text-[#8a8a8a] dark:text-zinc-400">
-                    Reach out for collaborations.
+                <p className="mt-1.5 max-w-[280px] text-[14px] leading-relaxed text-[#8a8a8a] dark:text-zinc-400">
+                    Have an idea or want to collaborate? Let&apos;s talk.
                 </p>
             </div>
 
@@ -52,10 +52,10 @@ export default function ContactTile() {
             </button>
 
             {/* Visual (Bigger 3D Envelope + Cards) Shifted to the right */}
-            <div className="absolute inset-0 top-[110px] pointer-events-none flex items-end justify-end pr-[2%] sm:pr-[8%]">
+            <div className="absolute inset-0 top-[110px] pointer-events-none flex items-end justify-end pr-0 sm:pr-[4%] md:pr-[8%]">
 
                 {/* Main Envelope Wrapper, gentle lift on hover only */}
-                <div className="relative bottom-4 w-[320px] h-[190px] origin-bottom sm:scale-100 scale-90 flex justify-center flex-col items-center">
+                <div className="relative bottom-3 sm:bottom-4 w-[300px] sm:w-[320px] h-[180px] sm:h-[190px] origin-bottom-right scale-[0.70] xs:scale-[0.82] sm:scale-100 flex justify-center flex-col items-center">
                     
                     {/* ENVELOPE BACK INTERIOR */}
                     <div className="absolute bottom-0 w-[320px] h-[180px] bg-[#f0f0f0] dark:bg-[#0d0d0d] rounded-b-[24px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.02)] overflow-hidden">

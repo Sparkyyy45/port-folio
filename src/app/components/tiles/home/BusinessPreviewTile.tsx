@@ -3,16 +3,25 @@ import Link from "next/link";
 
 export default function BusinessPreviewTile() {
     return (
-        <div className="w-full h-full relative overflow-hidden rounded-4xl bg-[#f4dc93] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
-            <div className="absolute -top-20 -right-16 w-[48%] aspect-square bg-white/45 rounded-full dark:bg-[#0d1117]" />
-            <div className="absolute -bottom-24 left-[10%] w-[38%] h-[72%] bg-[#efbdd1] rounded-[50%] dark:bg-[#0d1117]" />
+        <div className="w-full h-full relative overflow-hidden rounded-4xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-purple-500/10 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 border border-emerald-500/20 group">
+            <div className="absolute -top-20 -right-16 w-[48%] aspect-square bg-emerald-400/15 rounded-full blur-2xl dark:bg-[#0d1117]" />
+            <div className="absolute -bottom-24 left-[10%] w-[38%] h-[72%] bg-purple-500/15 rounded-[50%] blur-2xl dark:bg-[#0d1117]" />
 
-            <div className="absolute top-[18%] left-[17%] w-[68%] aspect-[16/9] -rotate-[31deg] rounded-[2rem] bg-[#f8f8f8] shadow-[0_22px_42px_rgba(15,23,42,0.18)] overflow-hidden">
+            {/* Studio Badge */}
+            <div className="absolute top-5 left-6 z-30 flex items-center gap-2">
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 backdrop-blur-md flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Worthfinding Studio
+                </span>
+            </div>
+
+            {/* Rotated UI Mockup */}
+            <div className="absolute top-[16%] left-[18%] w-[70%] aspect-[16/9] -rotate-[28deg] rounded-[1.8rem] bg-[#0d1117] shadow-[0_24px_48px_rgba(0,0,0,0.35)] overflow-hidden border border-emerald-500/30 transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-[25deg]">
                 <Image
-                    src="/projects/hinez.webp"
-                    alt="Business app preview"
+                    src="/projects/worthfinding-real.png"
+                    alt="Worthfinding Studio"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                     quality={100}
                     unoptimized
                 />

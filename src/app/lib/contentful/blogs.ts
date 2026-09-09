@@ -44,20 +44,44 @@ export async function getBlogsFromContentful(page: number, limit: number): Promi
     environment,
   });
 
-  let response: any;
+interface ContentfulEntryFields {
+  poster?: {
+    fields?: {
+      file?: {
+        url?: string;
+      };
+    };
+  };
+  headding?: string;
+  quickLook?: string;
+  description?: string;
+  decription?: string;
+  discription?: string;
+  tags?: string[];
+}
+
+interface ContentfulRawItem {
+  sys?: {
+    id?: string;
+    createdAt?: string;
+  };
+  fields?: ContentfulEntryFields;
+}
+
+  let response: { items?: ContentfulRawItem[] } | undefined;
   try {
-    response = await client.getEntries({
+    response = (await client.getEntries({
       content_type: contentType,
       order: ["-sys.createdAt"],
       limit,
       skip,
       include: 2,
-    });
+    })) as unknown as { items?: ContentfulRawItem[] };
   } catch {
     return { total: 0, items: [] };
   }
 
-  const items = (response.items || []).map((item: any) => {
+  const items = (response?.items || []).map((item: ContentfulRawItem) => {
     const poster = item.fields?.poster;
     const posterUrl = normalizeAssetUrl(poster?.fields?.file?.url);
 

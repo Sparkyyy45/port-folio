@@ -4,15 +4,18 @@
 import styled from "styled-components";
 import { useTheme } from '../../../theme-provider';
 
-import React, { useEffect, useState } from "react";
-// ...existing code...
+import React, { useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 
 const ThemeToggleTile = () => {
   const { theme, toggleTheme } = useTheme();
-  const [isHydrated, setIsHydrated] = useState(false);
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+  const isHydrated = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
   if (!isHydrated) return null;
   return (
     <StyledWrapper>
