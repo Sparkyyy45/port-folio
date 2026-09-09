@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "angular-next",
   "version": "0.1.0",
   "private": true,
@@ -35,5 +35,9 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4.2.1",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "sharp": true,
+    "unrs-resolver": true
   }
 }
